@@ -1,0 +1,36 @@
+vbell off
+startup_message off
+setenv LC_CTYPE en_US.UTF-8
+
+#deflogin off       # do not log new screen windows in utmp
+autodetach on       # detach on hangup
+shell bash      # use bash instead of sh
+defscrollback 5000  # increase default scrollback
+defutf8 on      # always use utf8
+defnonblock on      # don't let one bad window block whole session
+msgwait 3       # message timeout
+
+# 256 color xterm
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+
+hardstatus alwayslastline "%{=b} %{y}%w %=%{kG}%M %d  %c "
+
+zombie cr
+
+bind s select bash  # go to first window with free shell open
+
+bind b eval "hardcopy_append off" "hardcopy -h $HOME/.urlview-dump" "screen urlview $HOME/.urlview-dump"
+
+bindkey -k k2 windowlist -b   # list of windows
+bindkey -k k3 split # split screen
+bindkey -k k4 focus # change current window focus
+bindkey -k k5 resize -1 # increase size of current window
+bindkey -k k6 resize +1 # increase size of current window
+bindkey -k k7 remove    # F7 removes current window from display
+bindkey -k k8 detach    # F8 detaches session
+bindkey -k k9 title # F9 set window title
+bindkey -k k; screen    # F10 creates new window
+bindkey -k F1 prev  # F11 goes to previous window
+bindkey -k F2 next  # F12 goes to next window

@@ -1,0 +1,101 @@
+set editor="vim"
+
+my_hdr From: Firstname Lastname <user@domain.com>
+my_hdr Reply-To: user@domain.com
+set realname="Firstname Lastname"
+set from="Firstname Lastname <user@domain.com>"
+
+# Local Account
+#set folder=~/mail
+#set mbox=+saved-messages
+#set record=+sent-mail
+#set spoolfile=/var/spool/mail/username
+#set sendmail="/usr/sbin/sendmail"    # or /usr/bin/msmtp
+
+# IMAP Account
+#set ssl_starttls=no
+#set imap_user=user@domain.com
+#set imap_pass=plain_text_password
+#set folder=imap://imap.domain.com/
+#set spoolfile=imap://imap.domain.com/INBOX
+#set record=+INBOX.Sent
+#set postponed=+INBOX.Drafts
+#set imap_check_subscribed       # auto-poll for new mail
+#set mail_check=60               # auto-poll all mailboxes (seconds)
+#set timeout=30                  # auto-poll current mailbox (seconds)
+# Alternate IMAP
+#account-hook  imaps://user2@domain.com 'set imap_user=user2 imap_pass=pass'
+#folder-hook   imaps://user2@domain 'set spoolfile=imaps://domain.com/Incoming folder=imaps://domain.com mbox=+Incoming from="User2 Name <user2@domain.com>"'
+#macro index     ,.   "cimap://user@domain.com/INBOX\n" "Switch to main user"
+#macro index     ,/   "cimaps://user2@domain.com/Incoming\n" "Switch to alternate user"
+
+#mailboxes =INBOX
+
+set tmpdir="~/.mutt/tmpdir"
+set header_cache="~/.mutt/cache"
+set alias_file="~/.aliases"
+set signature='~/.signature'
+
+auto_view text/html
+
+ignore *
+unignore from subject to cc date
+unignore x-url x-resent organization organisation x-mailing-list:
+unignore x-webtv x-lotus user-agent: x-agent: x-mailer: x-newsreader:
+unignore newsgroups: posted-to: x-also-posted-to:
+
+set envelope_from=yes
+set reverse_name
+set move=no
+set mask="!^\\.[^.]"
+set attribution="! In '%s', on %d, %n wrote:"
+set indent_string="> "          # Quoting mails with this string.
+set abort_nosubject=no          # Abort, if message has no subject
+set abort_unmodified=yes        # Abort, if message wasn't edited
+set include=yes                 # quote message when replying
+set postpone=ask-yes            # ask for postponing when doing an Abort.
+set quit=yes                    # q quits main screen.
+set recall=ask-yes              # ask for using postponed message.
+set reply_to=yes                # Use or ignore Reply-To.
+set honor_followup_to=yes       # Ask whether to honor Mail-Followup-To header
+unset edit_headers		# Put headers in editor whe composing messages
+set fast_reply			# do not ask for to, subject, etc when replying
+unset followup_to		# Add Mail-Followup-To header
+set honor_followup_to		# Mail-Followup-To header is honored?
+unset force_name		# outgoing mail to be saved in folder of "login name"
+unset header			# quote full header on reply
+set help			# show help in first line of the display
+unset ignore_list_reply_to      # ignore Reply-To pointing back to mailinglist
+set mailcap_sanitize		# remove ugly chars from mailcap % expands.
+unset mark_old			# mark new articles as old, when leaving mbox
+set markers			# put a '+' at the beginning of wrapped lines.
+unset metoo			# should we keep ourselves in group replies?
+set pager_stop			# Don't jump to next message at end of message.
+set pgp_verify_sig		# always verify pgp signatures
+unset save_name			# Fcc, if ~/Mail/<to> exists.
+set sig_dashes			# prepend "-- \n" to the signature
+set smart_wrap			# wrap long lines at word boundary.
+set sort_re			# set: only put a child in a thread, if starts with Re:
+unset strict_threads		# thread only by In-Reply-To/References or by Subject.
+set user_agent			# Create User-Agent: Mutt/<Version> header.
+unset use_domain
+unset use_from
+set sort=threads
+unset write_bcc
+unset bounce_delivered
+
+bind editor    "\e<delete>"    kill-word
+bind editor    "\e<backspace>" kill-word
+bind editor     <delete>  delete-char
+bind browser y exit
+
+color normal    white black
+color attachment brightyellow black
+color hdrdefault cyan black
+color indicator black cyan
+color markers   brightred black
+color quoted    green black
+color signature cyan black
+color status    brightgreen blue
+color tilde     blue black
+color tree      red black
