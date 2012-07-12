@@ -57,8 +57,20 @@ cmap ,x :w<CR>:!./%<CR>
 cabbrev drupal syn on<CR>:set ft=php
 
 highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+highlight InitialTabs ctermbg=yellow guibg=yellow
 
+au ColorScheme *
+        \ highlight ExtraWhitespace guibg=red |
+        \ highlight InitialTabs guibg=yellow
+
+au BufEnter *
+        \ match ExtraWhitespace /\s\+$/ |
+        \ 2match InitialTabs /^\t/
+
+au InsertEnter *
+        \ match ExtraWhitespace /\s\+\%#\@<!$/ |
+        \ 2match InitialTabs /^\t/
+
+au InsertLeave *
+        \ match ExtraWhiteSpace /\s\+$/ |
+        \ 2match InitialTabs /^\t/
