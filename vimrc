@@ -16,9 +16,9 @@ set viminfo='20,\"50	" read/write a .viminfo file, don't store more than
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 
-set tabstop=4		" Default tabstop value	(usually 8)
-set softtabstop=4	" also try 2
-set shiftwidth=4
+set tabstop=2		" Default tabstop value	(usually 8)
+set softtabstop=2
+set shiftwidth=2
 set expandtab		" set noexpandtab to use actual tab chars
 
 " Suffixes that get lower priority when doing tab completion for filenames.
