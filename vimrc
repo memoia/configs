@@ -21,6 +21,8 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab		" set noexpandtab to use actual tab chars
 
+set nohlsearch          " do not highlight search terms
+
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
